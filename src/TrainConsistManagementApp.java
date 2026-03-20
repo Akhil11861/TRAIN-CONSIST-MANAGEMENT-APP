@@ -1,15 +1,50 @@
-import java.util.ArrayList;
-import java.util.List;
-class TrainConsistApp {
+import java.util.*;
+
+class TrainBogieApp {
+
+    public static void insertBogie(List<Integer> trainConsist, int bogieNumber) {
+        int i = 0;
+
+
+        while (i < trainConsist.size() && trainConsist.get(i) < bogieNumber) {
+            i++;
+        }
+
+
+        trainConsist.add(i, bogieNumber);
+    }
+
+
+    public static void display(List<Integer> trainConsist) {
+        System.out.println("Train Bogie Consist:");
+        for (int bogie : trainConsist) {
+            System.out.print(bogie + " ");
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
 
-        System.out.println("==============================================");
-        System.out.println("=== Train Consist Management App ===");
-        System.out.println("==============================================\n");
+        System.out.println("=====================================");
+        System.out.println(" UC4 - Maintain Ordered Bogie Consist ");
+        System.out.println("=====================================\n");
 
-        List<String> trainConsist = new ArrayList<>();
+        List<Integer> trainConsist = new LinkedList<>();
 
-        System.out.println("Train initialized successfully...");
-        System.out.println("Current number of bogies:   " + trainConsist.size());
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of bogies: ");
+        int n = sc.nextInt();
+
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter bogie number: ");
+            int bogie = sc.nextInt();
+            insertBogie(trainConsist, bogie);
+        }
+
+        display(trainConsist);
+
+        sc.close();
     }
 }
