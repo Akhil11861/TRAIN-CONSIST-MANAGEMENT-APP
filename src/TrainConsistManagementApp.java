@@ -1,49 +1,30 @@
 import java.util.*;
+class BogieFormationApp {
 
-class TrainBogieApp {
+    static void main(String[] args) {
 
-    public static void insertBogie(List<Integer> trainConsist, int bogieNumber) {
-        int i = 0;
+        System.out.println("=========================================");
+        System.out.println(" UC5 - Preserve Insertion Order of Bogies ");
+        System.out.println("=========================================\n");
 
-
-        while (i < trainConsist.size() && trainConsist.get(i) < bogieNumber) {
-            i++;
-        }
-
-
-        trainConsist.add(i, bogieNumber);
-    }
-
-
-    public static void display(List<Integer> trainConsist) {
-        System.out.println("Train Bogie Consist:");
-        for (int bogie : trainConsist) {
-            System.out.print(bogie + " ");
-        }
-        System.out.println();
-    }
-
-    public static void main(String[] args) {
-
-        System.out.println("=====================================");
-        System.out.println(" UC4 - Maintain Ordered Bogie Consist ");
-        System.out.println("=====================================\n");
-
-        List<Integer> trainConsist = new LinkedList<>();
+        Set<String> formation = new LinkedHashSet<>();
 
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter number of bogies: ");
         int n = sc.nextInt();
-
+        sc.nextLine();
 
         for (int i = 0; i < n; i++) {
-            System.out.print("Enter bogie number: ");
-            int bogie = sc.nextInt();
-            insertBogie(trainConsist, bogie);
+            System.out.print("Enter bogie name/number: ");
+            String bogie = sc.nextLine();
+            formation.add(bogie);
         }
 
-        display(trainConsist);
+        System.out.println("\nBogie Formation (Insertion Order Preserved):");
+        for (String b : formation) {
+            System.out.print(b + " ");
+        }
 
         sc.close();
     }
